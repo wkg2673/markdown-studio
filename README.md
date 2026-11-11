@@ -17,7 +17,7 @@
 
 ## Screenshot
 
-<img width="3439" height="1439" alt="image" src="https://github.com/user-attachments/assets/0d275d2d-c6b5-4628-bc8f-3aaf560e5607" />
+<img width="3639" height="1639" alt="image" src="https://github.com/user-attachments/assets/0d275d2d-c6b5-4628-bc8f-3aaf560e5607" />
 
 ## About
 
