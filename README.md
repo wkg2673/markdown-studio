@@ -1,3 +1,5 @@
+[demo-link]: https://to8-markdown.netlify.app/
+
 <div align="center">
 
 # Markdown Studio
@@ -9,7 +11,7 @@
 [![Vanilla JS](https://img.shields.io/badge/built%20with-vanilla%20JS-f7b955.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8a63f3.svg)](#contributing)
 
-[Features](#-features) · [Getting started](#-getting-started) · [Keyboard shortcuts](#%EF%B8%8F-keyboard-shortcuts) · [Project structure](#-project-structure)
+[Features](#-features) · [Getting started](#-getting-started) · [Keyboard shortcuts](#%EF%B8%8F-keyboard-shortcuts) · [Project structure](#-project-structure) · [Live Demo][demo-link]
 
 </div>
 
