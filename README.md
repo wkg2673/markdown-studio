@@ -241,7 +241,6 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 
 ## License
 
-Released under the [MIT License](LICENSE). Vendored libraries keep their own
-licenses — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+Released under the [MIT License](LICENSE).
 
 ###### Made by wkg2673
