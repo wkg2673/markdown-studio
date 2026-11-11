@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✍️ Markdown Studio
+# Markdown Studio
 
 **A modern, privacy-first Markdown editor with live preview — in your browser.**
 
@@ -15,15 +15,11 @@
 
 ---
 
-## 📸 Screenshot
+## Screenshot
 
-![Markdown Studio screenshot](assets/images/screenshot-placeholder.svg)
+<img width="3439" height="1439" alt="image" src="https://github.com/user-attachments/assets/0d275d2d-c6b5-4628-bc8f-3aaf560e5607" />
 
-> **Note:** this is a placeholder. Replace `assets/images/screenshot-placeholder.svg`
-> with a real screenshot after cloning — the app looks exactly like the banner
-> above, promise. 🙃
-
-## 📖 About
+## About
 
 **Markdown Studio** is a single-page, dependency-light Markdown editor inspired
 by the feel of Notion, Obsidian, and Typora. It renders GitHub Flavored
@@ -34,23 +30,23 @@ Everything runs client-side: documents are stored in your browser's
 `localStorage` and never leave your device. There is no build step, no bundler,
 no framework — just HTML, CSS, and vanilla JavaScript.
 
-## ✨ Features
+## Features
 
 ### Editor
 
-- 🖊 **Split-screen editing** — Markdown source on the left, live rendered
+- **Split-screen editing** — Markdown source on the left, live rendered
   preview on the right; switch between split, editor-only, and preview-only
   views
-- ↔️ **Draggable divider** to resize the panes (double-click to reset)
-- 🌈 **Syntax highlighting** for Markdown source, plus line numbers that
+- **Draggable divider** to resize the panes (double-click to reset)
+- **Syntax highlighting** for Markdown source, plus line numbers that
   follow soft-wrapped lines
-- 🔍 **Find & replace** with match highlighting, match-case toggle, replace-one
+- **Find & replace** with match highlighting, match-case toggle, replace-one
   and replace-all
-- ↩️ **Undo / redo** with a smart, typing-aware history stack
-- ⌨️ **Smart keys** — lists continue (and renumber) on `Enter`, `Tab` /
+- **Undo / redo** with a smart, typing-aware history stack
+- **Smart keys** — lists continue (and renumber) on `Enter`, `Tab` /
   `Shift+Tab` indent and dedent selections
-- 🖥 **Fullscreen mode** for distraction-free writing
-- 🖱 **Synced scrolling** between editor and preview (optional)
+- **Fullscreen mode** for distraction-free writing
+- **Synced scrolling** between editor and preview (optional)
 
 ### Markdown
 
@@ -64,26 +60,26 @@ no framework — just HTML, CSS, and vanilla JavaScript.
 
 ### Documents
 
-- 📚 **Multi-document sidebar** — create, rename, delete, and switch between
+- **Multi-document sidebar** — create, rename, delete, and switch between
   documents without losing changes
-- 💾 **Autosave** to `localStorage` (with save status in the status bar)
-- 🔁 **Restores your last document** after a page refresh
-- 📥 **Import** `.md` / `.markdown` / `.txt` files (multiple at once)
-- 📤 **Export** any document as a `.md` file
-- 📋 Copy the Markdown source, the rendered HTML, or the preview text
-- 🖨 A print stylesheet that prints just the preview
+- **Autosave** to `localStorage` (with save status in the status bar)
+- **Restores your last document** after a page refresh
+- **Import** `.md` / `.markdown` / `.txt` files (multiple at once)
+- **Export** any document as a `.md` file
+- Copy the Markdown source, the rendered HTML, or the preview text
+- A print stylesheet that prints just the preview
 
 ### Interface
 
-- 🌙 **Dark theme by default** with a full light theme
-- 🧰 **Formatting toolbar** (headings, emphasis, lists, links, images, code,
+- **Dark theme by default** with a full light theme
+- **Formatting toolbar** (headings, emphasis, lists, links, images, code,
   tables, rules) that inserts syntax at the cursor
-- 📊 **Live statistics** — words, characters, lines, reading time, cursor
+- **Live statistics** — words, characters, lines, reading time, cursor
   position, current document
-- ♿ Responsive layout for desktop, tablet, and mobile; reduced-motion support
-- 🎨 Customizable fonts, sizes, line numbers, tab width, and more in Settings
+- Responsive layout for desktop, tablet, and mobile; reduced-motion support
+- Customizable fonts, sizes, line numbers, tab width, and more in Settings
 
-## 🛠️ Technologies used
+## Technologies used
 
 | Purpose | Choice |
 | --- | --- |
@@ -98,7 +94,7 @@ no framework — just HTML, CSS, and vanilla JavaScript.
 The three libraries above are vendored in `vendor/` so the app works offline
 and behind firewalls — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
-## 🚀 Getting started
+## Getting started
 
 ### Run locally
 
@@ -130,7 +126,7 @@ The project is a fully static site — host it anywhere:
 - Netlify / Vercel / Cloudflare Pages: drag-and-drop the folder
 - Any web server: copy the folder to your document root
 
-## 📂 Project structure
+## Project structure
 
 ```text
 markdown-studio/
@@ -204,7 +200,7 @@ follow soft-wrapped lines automatically.
 The same list is available inside the app under **Settings → Keyboard
 shortcuts**.
 
-## 📖 Usage
+## Usage
 
 1. **Start writing** — the welcome document demonstrates every Markdown
    feature; edit or delete it freely.
@@ -219,7 +215,7 @@ shortcuts**.
 6. Everything is stored locally per browser — clearing site data deletes your
    documents, so use export for backups.
 
-## 🌐 Browser compatibility
+## Browser compatibility
 
 Tested on the latest versions of **Chrome**, **Edge**, and **Firefox** on
 desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
@@ -231,7 +227,7 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 
 > Internet Explorer is not supported.
 
-## 🔮 Future improvements
+## Future improvements
 
 - [ ] Export to HTML and PDF
 - [ ] Document folders or tags
@@ -241,7 +237,7 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 - [ ] Optional sync via a user-supplied backend
 - [ ] PWA manifest and offline install
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! To keep the project build-free and dependency-light,
 please:
@@ -255,7 +251,9 @@ please:
 Found a bug? Please open an issue with steps to reproduce, your browser, and
 what you expected instead.
 
-## 📄 License
+## License
 
 Released under the [MIT License](LICENSE). Vendored libraries keep their own
 licenses — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+###### Made by wkg2673
