@@ -1,0 +1,19 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local dev servers
+node_modules/
+.tmp/
+.cache/
+
+# Never commit runtime artifacts
+*.log

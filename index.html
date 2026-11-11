@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Markdown Studio — a fast, beautiful, privacy-first Markdown editor with live preview, syntax highlighting and local autosave.">
+  <meta name="theme-color" content="#16181d">
+  <title>Markdown Studio — Modern Markdown Editor</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editor.css">
+  <script defer src="vendor/marked.min.js"></script>
+  <script defer src="vendor/purify.min.js"></script>
+  <script defer src="vendor/highlight.min.js"></script>
+  <script defer src="js/icons.js"></script>
+  <script defer src="js/utils.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/markdown.js"></script>
+  <script defer src="js/editor.js"></script>
+  <script defer src="js/toolbar.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- Top navigation bar -->
+    <header class="topbar">
+      <div class="topbar-group topbar-left">
+        <button type="button" class="icon-btn" id="btn-sidebar-toggle" data-icon="panel-left" aria-label="Toggle sidebar" title="Toggle sidebar (Ctrl+\)"></button>
+        <div class="logo" role="img" aria-label="Markdown Studio">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="26" height="26" xmlns="http://www.w3.org/2000/svg" role="presentation">
+              <defs>
+                <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="var(--logo-1)"/>
+                  <stop offset="1" stop-color="var(--logo-2)"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#lg)"/>
+              <path d="M11 31V17l8 8 8-8v14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M33 23l4 4 4-4" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+            </svg>
+          </span>
+          <span class="logo-name">Markdown&nbsp;Studio</span>
+        </div>
+        <div class="topbar-sep" aria-hidden="true"></div>
+        <button type="button" class="icon-btn" id="btn-new-doc" data-icon="file-plus" aria-label="New document" title="New document (Ctrl+Alt+N)"></button>
+        <button type="button" class="icon-btn" id="btn-import" data-icon="folder-open" aria-label="Import Markdown file" title="Import .md file (Ctrl+O)"></button>
+        <button type="button" class="icon-btn" id="btn-export" data-icon="download" aria-label="Save / export document" title="Export as .md (Ctrl+S)"></button>
+        <div class="topbar-sep" aria-hidden="true"></div>
+        <button type="button" class="icon-btn" id="btn-undo" data-icon="undo" aria-label="Undo" title="Undo (Ctrl+Z)" disabled></button>
+        <button type="button" class="icon-btn" id="btn-redo" data-icon="redo" aria-label="Redo" title="Redo (Ctrl+Shift+Z)" disabled></button>
+        <button type="button" class="icon-btn" id="btn-find" data-icon="search" aria-label="Find and replace" title="Find &amp; replace (Ctrl+F)"></button>
+      </div>
+
+      <div class="topbar-group topbar-right">
+        <button type="button" class="icon-btn" id="btn-more" data-icon="more" aria-label="More actions" title="More actions" aria-haspopup="menu" aria-expanded="false"></button>
+        <div class="topbar-sep" aria-hidden="true"></div>
+        <button type="button" class="icon-btn" id="btn-theme" data-icon="sun" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+L)"></button>
+        <button type="button" class="icon-btn" id="btn-fullscreen" data-icon="maximize" aria-label="Toggle fullscreen" title="Fullscreen (F10)"></button>
+        <button type="button" class="icon-btn" id="btn-settings" data-icon="settings" aria-label="Open settings" title="Settings"></button>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <!-- Document sidebar -->
+      <aside class="sidebar" id="sidebar" aria-label="Documents">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Documents</span>
+          <button type="button" class="icon-btn small" id="btn-new-doc-side" data-icon="plus" aria-label="New document" title="New document"></button>
+        </div>
+        <nav class="doc-list" id="doc-list" aria-label="Saved documents"></nav>
+        <div class="sidebar-footer">
+          <span id="sidebar-meta">—</span>
+        </div>
+      </aside>
+      <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+      <main class="main" id="main">
+
+        <!-- Formatting toolbar -->
+        <div class="toolbar" id="toolbar" role="toolbar" aria-label="Markdown formatting">
+          <div class="toolbar-group">
+            <button type="button" class="icon-btn" id="tb-heading" data-icon="heading" aria-label="Heading" title="Heading (Ctrl+Alt+1…6)" aria-haspopup="menu" aria-expanded="false"></button>
+            <button type="button" class="icon-btn" data-cmd="bold" data-icon="bold" aria-label="Bold" title="Bold (Ctrl+B)"></button>
+            <button type="button" class="icon-btn" data-cmd="italic" data-icon="italic" aria-label="Italic" title="Italic (Ctrl+I)"></button>
+            <button type="button" class="icon-btn" data-cmd="strikethrough" data-icon="strikethrough" aria-label="Strikethrough" title="Strikethrough (Ctrl+Shift+X)"></button>
+          </div>
+          <div class="toolbar-sep" aria-hidden="true"></div>
+          <div class="toolbar-group">
+            <button type="button" class="icon-btn" data-cmd="quote" data-icon="quote" aria-label="Blockquote" title="Blockquote (Ctrl+Shift+B)"></button>
+            <button type="button" class="icon-btn" data-cmd="ul" data-icon="list" aria-label="Bullet list" title="Bullet list (Ctrl+Shift+8)"></button>
+            <button type="button" class="icon-btn" data-cmd="ol" data-icon="list-ordered" aria-label="Numbered list" title="Numbered list (Ctrl+Shift+7)"></button>
+            <button type="button" class="icon-btn" data-cmd="task" data-icon="list-todo" aria-label="Task list" title="Task list (Ctrl+Shift+9)"></button>
+          </div>
+          <div class="toolbar-sep" aria-hidden="true"></div>
+          <div class="toolbar-group">
+            <button type="button" class="icon-btn" data-cmd="link" data-icon="link" aria-label="Insert link" title="Link (Ctrl+K)"></button>
+            <button type="button" class="icon-btn" data-cmd="image" data-icon="image" aria-label="Insert image" title="Image (Ctrl+Shift+I)"></button>
+          </div>
+          <div class="toolbar-sep" aria-hidden="true"></div>
+          <div class="toolbar-group">
+            <button type="button" class="icon-btn" data-cmd="code" data-icon="code" aria-label="Inline code" title="Inline code (Ctrl+\`)"></button>
+            <button type="button" class="icon-btn" data-cmd="codeblock" data-icon="file-code" aria-label="Code block" title="Code block (Ctrl+Shift+C)"></button>
+            <button type="button" class="icon-btn" data-cmd="table" data-icon="table" aria-label="Insert table" title="Table (Ctrl+Shift+T)"></button>
+            <button type="button" class="icon-btn" data-cmd="hr" data-icon="minus" aria-label="Horizontal rule" title="Horizontal rule"></button>
+          </div>
+
+          <div class="toolbar-spacer"></div>
+
+          <!-- View mode switch -->
+          <div class="view-switch" id="view-switch" role="group" aria-label="View mode">
+            <button type="button" class="view-btn" data-mode="split" data-icon="columns" aria-label="Split view" title="Split view (Ctrl+\ then 1)"></button>
+            <button type="button" class="view-btn" data-mode="editor" data-icon="square-pen" aria-label="Editor only" title="Editor only (Ctrl+\ then 2)"></button>
+            <button type="button" class="view-btn" data-mode="preview" data-icon="eye" aria-label="Preview only" title="Preview only (Ctrl+\ then 3)"></button>
+          </div>
+        </div>
+
+        <!-- Editor area -->
+        <div class="editor-area" id="editor-area" data-mode="split">
+          <section class="editor-pane" id="editor-pane" aria-label="Markdown editor">
+            <!-- Populated by js/editor.js: line-numbered, syntax-highlighted surface -->
+          </section>
+          <div class="divider" id="divider" role="separator" aria-orientation="vertical" aria-label="Resize editor panels" title="Drag to resize — double-click to reset"></div>
+          <section class="preview-pane" id="preview-pane" aria-label="Rendered preview">
+            <article class="markdown-body" id="preview"></article>
+          </section>
+
+          <!-- Find & replace panel -->
+          <div class="find-panel" id="find-panel" hidden>
+            <div class="find-row">
+              <div class="find-field">
+                <input type="text" id="find-input" placeholder="Find" aria-label="Find" autocomplete="off" spellcheck="false">
+                <span class="find-count" id="find-count">0 results</span>
+                <button type="button" class="icon-btn small" id="find-case" data-icon="case-sensitive" aria-label="Match case" title="Match case" aria-pressed="false"></button>
+                <button type="button" class="icon-btn small" id="find-prev" data-icon="chevron-up" aria-label="Previous match" title="Previous (Shift+Enter)"></button>
+                <button type="button" class="icon-btn small" id="find-next" data-icon="chevron-down" aria-label="Next match" title="Next (Enter)"></button>
+              </div>
+              <button type="button" class="icon-btn small" id="find-close" data-icon="x" aria-label="Close find" title="Close (Esc)"></button>
+            </div>
+            <div class="find-row">
+              <div class="find-field">
+                <input type="text" id="replace-input" placeholder="Replace with" aria-label="Replace with" autocomplete="off" spellcheck="false">
+                <button type="button" class="btn small" id="btn-replace">Replace</button>
+                <button type="button" class="btn small" id="btn-replace-all">All</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status bar -->
+        <footer class="statusbar" id="statusbar">
+          <div class="statusbar-left">
+            <button type="button" class="doc-name" id="doc-name" title="Rename document (F2)">
+              <i data-icon="file-text"></i><span id="doc-name-text">Untitled</span>
+            </button>
+            <span class="statusbar-sep" aria-hidden="true"></span>
+            <span class="stat" id="stat-words" title="Word count"><i data-icon="word"></i><span class="stat-value">0</span></span>
+            <span class="stat" id="stat-chars" title="Character count">0 chars</span>
+            <span class="stat" id="stat-lines" title="Line count">1 line</span>
+            <span class="stat" id="stat-reading" title="Estimated reading time"><i data-icon="clock"></i><span class="stat-value">0 min</span></span>
+          </div>
+          <div class="statusbar-right">
+            <span class="stat" id="stat-cursor">Ln 1, Col 1</span>
+            <span class="statusbar-sep" aria-hidden="true"></span>
+            <span class="save-status" id="save-status" role="status">
+              <i data-icon="check"></i><span id="save-status-text">Ready</span>
+            </span>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <!-- Heading menu -->
+  <div class="menu" id="heading-menu" role="menu" aria-label="Heading level" hidden>
+    <button type="button" role="menuitem" data-level="1"><span class="h-demo h1">H1</span> Heading 1</button>
+    <button type="button" role="menuitem" data-level="2"><span class="h-demo h2">H2</span> Heading 2</button>
+    <button type="button" role="menuitem" data-level="3"><span class="h-demo h3">H3</span> Heading 3</button>
+    <button type="button" role="menuitem" data-level="4"><span class="h-demo h4">H4</span> Heading 4</button>
+    <button type="button" role="menuitem" data-level="5"><span class="h-demo h5">H5</span> Heading 5</button>
+    <button type="button" role="menuitem" data-level="6"><span class="h-demo h6">H6</span> Heading 6</button>
+  </div>
+
+  <!-- Overflow (more) menu -->
+  <div class="menu" id="more-menu" role="menu" aria-label="More actions" hidden>
+    <button type="button" role="menuitem" id="menu-copy-source"><i data-icon="clipboard"></i>Copy Markdown source</button>
+    <button type="button" role="menuitem" id="menu-copy-html"><i data-icon="code"></i>Copy rendered HTML</button>
+    <button type="button" role="menuitem" id="menu-copy-preview"><i data-icon="eye"></i>Copy preview text</button>
+    <div class="menu-sep"></div>
+    <button type="button" role="menuitem" id="menu-rename"><i data-icon="pencil"></i>Rename document</button>
+    <button type="button" role="menuitem" id="menu-print"><i data-icon="printer"></i>Print preview</button>
+  </div>
+
+  <!-- Dialog: confirm (delete etc.) -->
+  <div class="modal-backdrop" id="confirm-backdrop" hidden>
+    <div class="modal danger" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+      <div class="modal-icon"><i data-icon="alert"></i></div>
+      <h2 class="modal-title" id="confirm-title">Are you sure?</h2>
+      <p class="modal-message" id="confirm-message"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="confirm-cancel">Cancel</button>
+        <button type="button" class="btn danger" id="confirm-ok">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialog: prompt (new / rename doc) -->
+  <div class="modal-backdrop" id="prompt-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="prompt-title">
+      <h2 class="modal-title" id="prompt-title"></h2>
+      <div class="modal-field">
+        <label class="modal-label" for="prompt-input" id="prompt-label">Document name</label>
+        <input type="text" id="prompt-input" maxlength="120" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="prompt-cancel">Cancel</button>
+        <button type="button" class="btn primary" id="prompt-ok">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialog: settings -->
+  <div class="modal-backdrop" id="settings-backdrop" hidden>
+    <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="modal-head">
+        <h2 class="modal-title" id="settings-title">Settings</h2>
+        <button type="button" class="icon-btn" id="settings-close" data-icon="x" aria-label="Close settings"></button>
+      </div>
+      <div class="modal-scroll">
+        <section class="settings-section">
+          <h3 class="settings-heading">Editor</h3>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-font-size">Font size</label><small>Editor text size in pixels</small></div>
+            <div class="setting-control">
+              <input type="range" id="set-font-size" min="12" max="22" step="1" value="15">
+              <output id="set-font-size-out">15px</output>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-editor-font">Editor font</label><small> Typeface used while writing</small></div>
+            <div class="setting-control">
+              <select id="set-editor-font">
+                <option value="mono">Monospace</option>
+                <option value="sans">Sans-serif</option>
+                <option value="serif">Serif</option>
+              </select>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-preview-font">Preview font</label><small>Typeface used for rendered text</small></div>
+            <div class="setting-control">
+              <select id="set-preview-font">
+                <option value="sans">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="mono">Monospace</option>
+              </select>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-line-numbers">Line numbers</label><small>Show numbers next to lines</small></div>
+            <div class="setting-control"><input type="checkbox" id="set-line-numbers" class="switch" checked></div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-tab">Tab size</label><small>Spaces inserted by the Tab key</small></div>
+            <div class="setting-control">
+              <select id="set-tab">
+                <option value="2">2 spaces</option>
+                <option value="4">4 spaces</option>
+                <option value="8">8 spaces</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h3 class="settings-heading">Markdown</h3>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-breaks">Line breaks on Enter</label><small>Treat single newlines as &lt;br&gt; (GFM breaks)</small></div>
+            <div class="setting-control"><input type="checkbox" id="set-breaks" class="switch" checked></div>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h3 class="settings-heading">Behavior</h3>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-sync-scroll">Sync scrolling</label><small>Scroll editor and preview together</small></div>
+            <div class="setting-control"><input type="checkbox" id="set-sync-scroll" class="switch" checked></div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label for="set-autosave">Autosave</label><small>Save changes to this browser as you type</small></div>
+            <div class="setting-control"><input type="checkbox" id="set-autosave" class="switch" checked></div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><label>Theme</label><small>Also available from the top bar</small></div>
+            <div class="setting-control theme-toggle-buttons">
+              <button type="button" class="btn small" id="set-theme-dark">Dark</button>
+              <button type="button" class="btn small" id="set-theme-light">Light</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h3 class="settings-heading"><i data-icon="keyboard"></i> Keyboard shortcuts</h3>
+          <div class="shortcut-grid">
+            <div class="shortcut"><span>Save / export document</span><kbd>Ctrl</kbd><kbd>S</kbd></div>
+            <div class="shortcut"><span>New document</span><kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>N</kbd></div>
+            <div class="shortcut"><span>Import file</span><kbd>Ctrl</kbd><kbd>O</kbd></div>
+            <div class="shortcut"><span>Find &amp; replace</span><kbd>Ctrl</kbd><kbd>F</kbd></div>
+            <div class="shortcut"><span>Bold</span><kbd>Ctrl</kbd><kbd>B</kbd></div>
+            <div class="shortcut"><span>Italic</span><kbd>Ctrl</kbd><kbd>I</kbd></div>
+            <div class="shortcut"><span>Strikethrough</span><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>X</kbd></div>
+            <div class="shortcut"><span>Insert link</span><kbd>Ctrl</kbd><kbd>K</kbd></div>
+            <div class="shortcut"><span>Inline code</span><kbd>Ctrl</kbd><kbd>`</kbd></div>
+            <div class="shortcut"><span>Code block</span><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>C</kbd></div>
+            <div class="shortcut"><span>Heading 1–6</span><kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>1–6</kbd></div>
+            <div class="shortcut"><span>Bullet / numbered / task list</span><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>7/8/9</kbd></div>
+            <div class="shortcut"><span>Undo / redo</span><kbd>Ctrl</kbd><kbd>Z</kbd> / <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Z</kbd></div>
+            <div class="shortcut"><span>Rename document</span><kbd>F2</kbd></div>
+            <div class="shortcut"><span>Toggle sidebar</span><kbd>Ctrl</kbd><kbd>\</kbd></div>
+            <div class="shortcut"><span>Switch view mode</span><kbd>Ctrl</kbd><kbd>\</kbd> then <kbd>1–3</kbd></div>
+            <div class="shortcut"><span>Fullscreen</span><kbd>F10</kbd></div>
+            <div class="shortcut"><span>Close dialogs / find panel</span><kbd>Esc</kbd></div>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h3 class="settings-heading">Data</h3>
+          <p class="settings-note">
+            Documents are stored locally in your browser (<span id="settings-storage-usage">—</span>).
+            They never leave your device. Clearing browser data will delete them — use
+            <em>Export</em> to keep backups as <code>.md</code> files.
+          </p>
+          <div class="setting-row">
+            <div class="setting-info"><label>Reset</label><small>Delete every document and restore the welcome tour</small></div>
+            <div class="setting-control"><button type="button" class="btn danger small" id="btn-reset-all">Reset all data…</button></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="file-input" accept=".md,.markdown,.txt,text/markdown,text/plain" multiple hidden>
+
+</body>
+</html>
