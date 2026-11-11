@@ -1,8 +1,8 @@
 # Contributing to Markdown Studio
 
-First of all, thanks for considering to contribute to Markdown Studio!
+Y'all, thanks for considering to contribute to Markdown Studio!
 
-This document explains how you can contribute to the project.
+Here i explain how you can contribute to the project.
 
 ## Table of Contents
 
@@ -16,24 +16,20 @@ This document explains how you can contribute to the project.
 
 ## Getting Started
 
-Before making changes, make sure you have Git installed and the necessary development environment configured.
-
 1. Fork the repo.
 2. Clone your fork to your local machine:
 
    ```bash
-   git clone https://github.com/USER/markdown-studio.git
+   git clone https://github.com/YOUR-USERNAME/markdown-studio.git
    ```
 
-4. Navigate to the project directory:
+4. Navigate to the project:
 
    ```bash
    cd markdown-studio
    ```
 
-5. Install the project dependencies using the appropriate package manager.
-
-6. Create a new branch for your changes:
+5. Create a new branch for your changes:
 
    ```bash
    git checkout -b feature/feature-name
@@ -43,7 +39,7 @@ You are now ready to start contributing!
 
 ## Reporting Bugs
 
-If you encounter a bug, please open an issue in the GitHub repository.
+If you find a bug, please open an issue in the GitHub repo.
 
 Before creating an issue:
 - Check whether the issue has already been reported.
@@ -71,7 +67,7 @@ When suggesting a feature:
 - Explain why it would be useful.
 - Include examples or mockups if applicable.
 
-Please check existing issues and discussions before submitting a new suggestion to avoid duplicates.
+Please check existing issues before submitting a new suggestion to avoid duplicates.
 
 ## Submitting Pull Requests
 
@@ -94,13 +90,13 @@ Please make sure your pull request:
 - Has a clear and descriptive title.
 - Explains what was changed and why.
 - References related issues, if applicable.
-- Includes screenshots for visual changes.
-- Does not introduce unrelated changes.
+- Includes screenshots (for visual changes).
+- Does not introduce unrelated changes(f.e. changing a single line of code).
 - Has been tested before submission.
 
 Pull requests are reviewed and requested to make changes before being merged.
 
-Please be patient while your contribution is being reviewed.
+Please be patient while I'm reviewing your contribution.
 
 ## Code Guidelines
 
@@ -145,4 +141,4 @@ Recommended prefixes:
 
 ## Questions
 
-If you have questions or need help getting started, feel free to open a discussion or an issue in the GitHub repo.
+If you have questions or need help getting started, feel free to open a discussion or an issue in the GitHub repo or DM me.
