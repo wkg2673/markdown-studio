@@ -169,7 +169,7 @@ native caret, selection, IME input, and accessibility keep working. Line
 numbers are `::before` pseudo-elements of each logical line, which is why they
 follow soft-wrapped lines automatically.
 
-## ⌨️ Keyboard shortcuts
+## Keyboard shortcuts
 
 | Action | Shortcut |
 | --- | --- |
