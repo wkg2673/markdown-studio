@@ -239,20 +239,6 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 - [ ] Optional sync via a user-supplied backend
 - [ ] PWA manifest and offline install
 
-## Contributing
-
-Contributions are welcome! To keep the project build-free and dependency-light,
-please:
-
-1. Fork the repository and create a feature branch
-2. Keep to vanilla HTML/CSS/JS — no frameworks, no build steps
-3. Match the existing file layout and code style
-4. Test dark **and** light themes, plus a narrow (mobile) viewport
-5. Open a pull request describing what changed and why
-
-Found a bug? Please open an issue with steps to reproduce, your browser, and
-what you expected instead.
-
 ## License
 
 Released under the [MIT License](LICENSE). Vendored libraries keep their own
