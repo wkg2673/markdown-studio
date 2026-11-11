@@ -4,7 +4,7 @@
 
 # Markdown Studio
 
-**A modern, privacy-first Markdown editor with live preview — in your browser.**
+**A modern, privacy-first Markdown editor — in your browser.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-5b8cff.svg)](LICENSE)
 [![No build step](https://img.shields.io/badge/dependencies-vendored-4ade80.svg)](#%EF%B8%8F-technologies-used)
