@@ -1,0 +1,201 @@
+/* ============================================================
+   Markdown Studio — themes.css
+   Design tokens: dark theme (default) and light theme.
+   All component styles consume these variables.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+}
+
+/* ---------- Dark theme (default) ---------- */
+:root,
+:root[data-theme="dark"] {
+  /* Surfaces */
+  --bg:            #101216;
+  --bg-raised:     #161a21;
+  --bg-overlay:    #1c212a;
+  --bg-hover:      #222834;
+  --bg-active:     #283041;
+  --bg-input:      #12161d;
+
+  /* Text */
+  --text:          #d6dae3;
+  --text-strong:   #f2f4f8;
+  --text-muted:    #8b93a3;
+  --text-faint:    #5d6472;
+
+  /* Accents */
+  --accent:        #5b8cff;
+  --accent-hover:  #739ffd;
+  --accent-soft:   rgba(91, 140, 255, 0.14);
+  --accent-text:   #9db9ff;
+  --logo-1:        #5b8cff;
+  --logo-2:        #8a63f3;
+
+  /* Semantic */
+  --danger:        #ff6b6b;
+  --danger-soft:   rgba(255, 107, 107, 0.12);
+  --success:       #4ade80;
+  --warning:       #f4b860;
+
+  /* Lines & shadows */
+  --border:        #232936;
+  --border-soft:   #1d222c;
+  --shadow-lg:     0 18px 50px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-md:     0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-sm:     0 2px 10px rgba(0, 0, 0, 0.35);
+
+  /* Editor colors (markdown source highlighting) */
+  --ed-text:       #cdd3e0;
+  --ed-bg:         #12151b;
+  --ed-heading:    #7aa2ff;
+  --ed-emphasis:   #f2c29c;
+  --ed-strong:     #f2c29c;
+  --ed-strike:     #7b8494;
+  --ed-link:       #7ee0a3;
+  --ed-url:        #d0a7ff;
+  --ed-code:       #ff9d9d;
+  --ed-quote:      #8b93a3;
+  --ed-bullet:     #d0a7ff;
+  --ed-meta:       #5d6472;   /* hr, fences, punctuation */
+  --ed-section:    #7aa2ff;
+
+  /* Preview colors (markdown body) */
+  --pv-text:       #ccd2dd;
+  --pv-code-bg:    #171b23;
+  --pv-inline-code-bg: #202634;
+  --pv-quote-bg:   #171b23;
+  --pv-border:     #2a3140;
+  --pv-table-alt:  #171b23;
+
+  /* Syntax highlighting (highlight.js tokens) */
+  --syn-comment:     #6a7385;
+  --syn-keyword:     #c792ea;
+  --syn-string:      #a3d977;
+  --syn-number:      #f78c6c;
+  --syn-title:       #82aaff;
+  --syn-function:    #82aaff;
+  --syn-attr:        #ffcb6b;
+  --syn-literal:     #f78c6c;
+  --syn-type:        #7fdbca;
+  --syn-tag:         #ff9d9d;
+  --syn-name:        #82aaff;
+  --syn-built_in:    #7fdbca;
+  --syn-variable:    #d6dae3;
+  --syn-property:    #89ddff;
+  --syn-regexp:      #ffcb6b;
+  --syn-symbol:      #f78c6c;
+
+  /* UI details */
+  --find-hit-bg:    rgba(251, 220, 130, 0.28);
+  --find-hit-current-bg: rgba(251, 184, 60, 0.55);
+  --scrollbar-thumb: #2c3444;
+  --scrollbar-thumb-hover: #3a4457;
+  --scrollbar-track: transparent;
+  --active-line:    rgba(124, 146, 255, 0.06);
+  --selection:      rgba(91, 140, 255, 0.30);
+  --overlay:        rgba(6, 8, 12, 0.62);
+}
+
+/* ---------- Light theme ---------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:            #f7f8fa;
+  --bg-raised:     #ffffff;
+  --bg-overlay:    #ffffff;
+  --bg-hover:      #eef0f4;
+  --bg-active:     #e3e7ef;
+  --bg-input:      #ffffff;
+
+  --text:          #333a46;
+  --text-strong:   #14181f;
+  --text-muted:    #6b7280;
+  --text-faint:    #9aa1ad;
+
+  --accent:        #3f6ce0;
+  --accent-hover:  #3359c2;
+  --accent-soft:   rgba(63, 108, 224, 0.12);
+  --accent-text:   #3359c2;
+  --logo-1:        #4d7bf0;
+  --logo-2:        #8a63f3;
+
+  --danger:        #d64545;
+  --danger-soft:   rgba(214, 69, 69, 0.1);
+  --success:       #1d9e52;
+  --warning:       #b8860b;
+
+  --border:        #e2e5eb;
+  --border-soft:   #ebeef2;
+  --shadow-lg:     0 18px 50px rgba(24, 32, 48, 0.18), 0 4px 14px rgba(24, 32, 48, 0.10);
+  --shadow-md:     0 10px 28px rgba(24, 32, 48, 0.14);
+  --shadow-sm:     0 2px 10px rgba(24, 32, 48, 0.10);
+
+  --ed-text:       #38404d;
+  --ed-bg:         #ffffff;
+  --ed-heading:     #2050c0;
+  --ed-emphasis:   #9a5b00;
+  --ed-strong:     #9a5b00;
+  --ed-strike:     #8b93a3;
+  --ed-link:       #1c7a4d;
+  --ed-url:        #7a3fd0;
+  --ed-code:       #c24141;
+  --ed-quote:      #6b7280;
+  --ed-bullet:     #7a3fd0;
+  --ed-meta:       #9aa1ad;
+  --ed-section:    #2050c0;
+
+  --pv-text:       #2b3038;
+  --pv-code-bg:    #f2f4f8;
+  --pv-inline-code-bg: #eef0f5;
+  --pv-quote-bg:   #f2f4f8;
+  --pv-border:     #dce0e8;
+  --pv-table-alt:  #f5f6f9;
+
+  --syn-comment:     #8a919e;
+  --syn-keyword:     #8a3fd0;
+  --syn-string:      #3d8a4f;
+  --syn-number:      #c05621;
+  --syn-title:       #2050c0;
+  --syn-function:    #2050c0;
+  --syn-attr:        #9a5b00;
+  --syn-literal:     #c05621;
+  --syn-type:        #0e7a8a;
+  --syn-tag:         #c24141;
+  --syn-name:        #2050c0;
+  --syn-built_in:    #0e7a8a;
+  --syn-variable:    #38404d;
+  --syn-property:    #0e7490;
+  --syn-regexp:      #9a5b00;
+  --syn-symbol:      #c05621;
+
+  --find-hit-bg:    rgba(250, 200, 80, 0.45);
+  --find-hit-current-bg: rgba(247, 160, 30, 0.65);
+  --scrollbar-thumb: #c6ccd6;
+  --scrollbar-thumb-hover: #aab2bf;
+  --scrollbar-track: transparent;
+  --active-line:    rgba(63, 108, 224, 0.06);
+  --selection:      rgba(63, 108, 224, 0.25);
+  --overlay:        rgba(20, 26, 36, 0.45);
+}
+
+/* Shared tokens that are theme-independent */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI",
+    system-ui, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Cascadia Mono", "SF Mono", Menlo,
+    Consolas, "DejaVu Sans Mono", monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --topbar-h: 52px;
+  --toolbar-h: 44px;
+  --statusbar-h: 30px;
+  --sidebar-w: 272px;
+  --gutter-w: 52px;
+}
