@@ -1,8 +1,8 @@
 # Contributing to Markdown Studio
 
-Y'all, thanks for considering to contribute to Markdown Studio!
+Thanks for considering to contribute to Markdown Studio!
 
-Here i explain how you can contribute to the project.
+This guide explains how you can contribute to Markdown Studio.
 
 ## Table of Contents
 
@@ -23,13 +23,13 @@ Here i explain how you can contribute to the project.
    git clone https://github.com/YOUR-USERNAME/markdown-studio.git
    ```
 
-4. Navigate to the project:
+3. Navigate to the project:
 
    ```bash
    cd markdown-studio
    ```
 
-5. Create a new branch for your changes:
+4. Create a new branch for your changes:
 
    ```bash
    git checkout -b feature/feature-name
@@ -76,7 +76,7 @@ Pull requests are the primary way to contribute code to Markdown Studio.
 Follow these steps:
 
 1. Fork the repo.
-2. Create a new branch from the latest dev branch.
+2. Create a new branch from the `main` branch.
 3. Make your changes.
 4. Test your changes thoroughly.
 5. Commit changes with a descriptive commit message.
@@ -91,10 +91,10 @@ Please make sure your pull request:
 - Explains what was changed and why.
 - References related issues, if applicable.
 - Includes screenshots (for visual changes).
-- Does not introduce unrelated changes(f.e. changing a single line of code).
+- Keep changes focused on the purpose of the pull request and avoid unrelated modifications.
 - Has been tested before submission.
 
-Pull requests are reviewed and requested to make changes before being merged.
+Pull requests are reviewed, and changes may be requested before they are merged.
 
 Please be patient while I'm reviewing your contribution.
 
@@ -141,4 +141,4 @@ Recommended prefixes:
 
 ## Questions
 
-If you have questions or need help getting started, feel free to open a discussion or an issue in the GitHub repo or DM me.
+If you have questions or need help getting started, feel free to open a discussion or an issue in the GitHub repo.
