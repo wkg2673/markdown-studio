@@ -188,13 +188,13 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 
 ## Future improvements
 
-- [ ] Export to HTML and PDF
+- [x] Export to HTML and PDF
 - [ ] Document folders or tags
 - [ ] Multiple cursors / column selection
 - [ ] Paste images from the clipboard as local attachments
 - [ ] Markdown linting and outline navigation
 - [ ] Optional sync via a user-supplied backend
-- [ ] PWA manifest and offline install
+- [x] PWA manifest and offline install
 
 ## License
 
