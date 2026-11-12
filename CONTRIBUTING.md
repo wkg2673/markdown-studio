@@ -91,7 +91,7 @@ Please make sure your pull request:
 - Explains what was changed and why.
 - References related issues, if applicable.
 - Includes screenshots (for visual changes).
-- Keep changes focused on the purpose of the pull request and avoid unrelated modifications.
+- Keeps changes focused on the purpose of the pull request and avoids unrelated modifications.
 - Has been tested before submission.
 
 Pull requests are reviewed, and changes may be requested before they are merged.
