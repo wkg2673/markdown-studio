@@ -128,49 +128,6 @@ The project is a fully static site — host it anywhere:
 - Netlify / Vercel / Cloudflare Pages: drag-and-drop the folder
 - Any web server: copy the folder to your document root
 
-## Project structure
-
-```text
-markdown-studio/
-├── index.html                  App shell: top bar, sidebar, toolbar, editor area,
-│                               status bar, dialogs, find panel
-├── README.md
-├── LICENSE                     MIT
-├── THIRD_PARTY_NOTICES.md      Licenses for the vendored libraries
-├── .gitignore
-├── assets/
-│   └── images/                 Favicon, sample image, screenshot placeholder
-├── css/
-│   ├── themes.css              Design tokens for dark & light themes
-│   ├── style.css               App shell, sidebar, toolbar, dialogs, responsive
-│   └── editor.css              Editor surface, preview typography, hljs themes
-├── js/
-│   ├── icons.js                Inline Lucide icons (generated — do not edit)
-│   ├── utils.js                DOM helpers, debounce/throttle, stats, clipboard
-│   ├── storage.js              localStorage documents, settings, session
-│   ├── markdown.js             Markdown → sanitized HTML pipeline + footnotes
-│   ├── editor.js               Layered code editor: highlight mirror, history,
-│   │                           find & replace, smart keys
-│   ├── toolbar.js              Pure text transforms for the formatting toolbar
-│   └── app.js                  Application controller wiring everything together
-├── scripts/
-│   └── build-icons.mjs         Generates js/icons.js from Lucide (dev only)
-└── vendor/
-    ├── marked.min.js
-    ├── purify.min.js
-    └── highlight.min.js
-```
-
-### How the editor works (in 30 seconds)
-
-The editor uses the classic *layered* technique: a transparent-text
-`<textarea>` sits on top of a "mirror" `<div>` that renders the same text
-highlighted with highlight.js. Both layers share identical font metrics,
-padding, and width, so the colors line up with your (invisible) text while the
-native caret, selection, IME input, and accessibility keep working. Line
-numbers are `::before` pseudo-elements of each logical line, which is why they
-follow soft-wrapped lines automatically.
-
 ## Keyboard shortcuts
 
 | Action | Shortcut |
