@@ -595,6 +595,25 @@
     else toast('Export failed — your browser blocked the download.', 'error');
   }
 
+  async function exportHtmlDocument() {
+    if (!currentDoc) return;
+    saveNow({ silent: true });
+    const bodyHtml = Markdown.render(editor.getValue(), { breaks: settings.gfmBreaks });
+    const filename = Utils.sanitizeFilename(currentDoc.title) + '.html';
+    const ok = await Exporter.exportHtml(filename, currentDoc.title, bodyHtml);
+    if (ok) toast('Exported ' + filename);
+    else toast('Export failed — your browser blocked the download.', 'error');
+  }
+
+  async function exportPdfDocument() {
+    if (!currentDoc) return;
+    saveNow({ silent: true });
+    const bodyHtml = Markdown.render(editor.getValue(), { breaks: settings.gfmBreaks });
+    const ok = await Exporter.printDocument(currentDoc.title, bodyHtml);
+    if (ok) toast('Choose “Save as PDF” in the print dialog.', 'info');
+    else toast('Could not open the print view.', 'error');
+  }
+
   /* ---------- Copy actions ---------- */
 
   async function copySource() {
@@ -780,7 +799,7 @@
     menu.hidden = false;
     const rect = anchor.getBoundingClientRect();
     const menuRect = menu.getBoundingClientRect();
-    const top = Math.min(rect.bottom + 6, window.innerHeight - menuRect.height - 8);
+    const top = Math.max(8, Math.min(rect.bottom + 6, window.innerHeight - menuRect.height - 8));
     const left = Math.max(8, Math.min(rect.left, window.innerWidth - menuRect.width - 8));
     menu.style.top = top + 'px';
     menu.style.left = left + 'px';
@@ -847,10 +866,32 @@
       closeMenus();
       renameDocument();
     });
-    $('#menu-print').addEventListener('click', () => {
+    $('#menu-export-md').addEventListener('click', () => {
       closeMenus();
-      window.print();
+      exportDocument();
     });
+    $('#menu-export-html').addEventListener('click', () => {
+      closeMenus();
+      exportHtmlDocument();
+    });
+    $('#menu-export-pdf').addEventListener('click', () => {
+      closeMenus();
+      exportPdfDocument();
+    });
+    $('#menu-install').addEventListener('click', async () => {
+      closeMenus();
+      const accepted = window.PWA ? await window.PWA.promptInstall() : false;
+      if (!accepted) toast('Installation cancelled — you can install any time from this menu.', 'info');
+      refreshInstallItem();
+    });
+  }
+
+  /* ---------- Install prompt (PWA) ---------- */
+
+  function refreshInstallItem() {
+    const item = $('#menu-install');
+    if (!item) return;
+    item.hidden = !(window.PWA && window.PWA.canInstall());
   }
 
   /* ---------- Find & replace ---------- */
@@ -1233,6 +1274,15 @@
     initMenus();
     initFind();
     initDivider();
+
+    // PWA install prompt availability.
+    window.addEventListener('pwa:installable', refreshInstallItem);
+    window.addEventListener('pwa:dismissed', refreshInstallItem);
+    window.addEventListener('pwa:installed', () => {
+      refreshInstallItem();
+      toast('Markdown Studio installed');
+    });
+    refreshInstallItem();
 
     document.addEventListener('keydown', onGlobalKeydown);
     window.addEventListener('beforeunload', () => {

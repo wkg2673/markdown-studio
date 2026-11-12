@@ -8,6 +8,13 @@
   <meta name="theme-color" content="#16181d">
   <title>Markdown Studio — Modern Markdown Editor</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="application-name" content="Markdown Studio">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Markdown Studio">
   <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/editor.css">
@@ -18,9 +25,11 @@
   <script defer src="js/utils.js"></script>
   <script defer src="js/storage.js"></script>
   <script defer src="js/markdown.js"></script>
+  <script defer src="js/export.js"></script>
   <script defer src="js/editor.js"></script>
   <script defer src="js/toolbar.js"></script>
   <script defer src="js/app.js"></script>
+  <script defer src="js/pwa.js"></script>
 </head>
 <body>
   <div class="app" id="app">
@@ -190,8 +199,12 @@
       <button type="button" role="menuitem" id="menu-copy-html"><i data-icon="code"></i>Copy rendered HTML</button>
       <button type="button" role="menuitem" id="menu-copy-preview"><i data-icon="eye"></i>Copy preview text</button>
       <div class="menu-sep"></div>
+      <button type="button" role="menuitem" id="menu-export-md"><i data-icon="download"></i>Export Markdown (.md)</button>
+      <button type="button" role="menuitem" id="menu-export-html"><i data-icon="file-code"></i>Export HTML (.html)</button>
+      <button type="button" role="menuitem" id="menu-export-pdf"><i data-icon="printer"></i>Export PDF / Print…</button>
+      <div class="menu-sep"></div>
       <button type="button" role="menuitem" id="menu-rename"><i data-icon="pencil"></i>Rename document</button>
-      <button type="button" role="menuitem" id="menu-print"><i data-icon="printer"></i>Print preview</button>
+      <button type="button" role="menuitem" id="menu-install" hidden><i data-icon="download"></i>Install app</button>
     </div>
 
     <!-- Dialog: confirm (delete etc.) -->

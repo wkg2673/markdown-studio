@@ -608,6 +608,9 @@ body.divider-dragging .preview-pane { pointer-events: none; }
   position: fixed;
   z-index: 90;
   min-width: 190px;
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 5px;
   border-radius: var(--radius-md);
   background: var(--bg-overlay);
