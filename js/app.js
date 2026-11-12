@@ -985,6 +985,10 @@
         closeFind();
         return;
       }
+      if (appEl.classList.contains('sidebar-open')) {
+        appEl.classList.remove('sidebar-open');
+        return;
+      }
       return;
     }
 
@@ -1208,6 +1212,22 @@
     $$('.view-btn').forEach((btn) => {
       btn.addEventListener('click', () => setViewMode(btn.dataset.mode));
     });
+
+    // Keep sidebar classes coherent when the window crosses the mobile breakpoint.
+    const mobileQuery = window.matchMedia('(max-width: 900px)');
+    const onBreakpointChange = () => {
+      if (mobileQuery.matches) {
+        appEl.classList.remove('sidebar-collapsed');
+      } else {
+        appEl.classList.remove('sidebar-open');
+        appEl.classList.toggle('sidebar-collapsed', settings.sidebar === 'collapsed');
+      }
+    };
+    if (typeof mobileQuery.addEventListener === 'function') {
+      mobileQuery.addEventListener('change', onBreakpointChange);
+    } else if (typeof mobileQuery.addListener === 'function') {
+      mobileQuery.addListener(onBreakpointChange); // Safari < 14
+    }
 
     bindSettingsControls();
     initMenus();

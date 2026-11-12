@@ -961,7 +961,9 @@ kbd {
   .topbar, .toolbar, .statusbar, .sidebar, .divider,
   .find-panel, .toast-container, .editor-pane { display: none !important; }
   .app, .app-body, .main { display: block; height: auto; overflow: visible; }
-  .preview-pane { overflow: visible; }
+  /* Always print the rendered preview, even from editor-only mode. */
+  .preview-pane { display: block !important; overflow: visible; }
+  .code-copy-btn { display: none !important; }
   .markdown-body { max-width: none; color: #000; }
 }
 

@@ -156,7 +156,9 @@
         return true;
       }
     } catch (err) {
-      console.warn('Async clipboard failed, falling back:', err);
+      // Expected when the page is unfocused or clipboard permission is denied;
+      // the execCommand fallback below handles it.
+      console.debug('Async clipboard failed, falling back:', err);
     }
     try {
       const ta = document.createElement('textarea');
