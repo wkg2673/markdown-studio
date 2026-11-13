@@ -200,4 +200,4 @@ desktop, plus Chrome on Android. The app targets evergreen browsers and uses:
 
 Released under the [MIT License](LICENSE).
 
-###### Made by wkg2673
+###### Made by wkg2673, built with OpenCode.
